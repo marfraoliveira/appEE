@@ -41,10 +41,10 @@ def predict():
         data = df.to_numpy()
         data = data.reshape(-1, 90, 3)
         # Faça uma única previsão com o modelo carregado
-        class_predict = np.argmax(model.predict(data), axis=1)
+        #class_predict = np.argmax(model.predict(data), axis=1)
         mapeamento = {0: 'Downstairs', 1: 'Jogging', 2: 'Sitting', 3: 'Standing', 4: 'Upstairs', 5: 'Walking'}
         # rotulos = [mapeamento[v] for v in class_predict]
-        return jsonify({'args': str(class_predict)})
+        return jsonify({'args': str('class_predict')})
     except Exception as e:
         return jsonify({'error': str(e)})
 
