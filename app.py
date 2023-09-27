@@ -22,6 +22,10 @@ model = load_model('./modelCNN.h5')
 import time
 
 
+@app.route('/', methods=['GET'])
+def hello_world():
+    return 'Hello, World!'
+    
 @app.route('/api', methods=['POST'])
 def predict():
     try:
