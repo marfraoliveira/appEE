@@ -36,7 +36,7 @@ def predict():
         df['y'] = df['y'].astype('float')
         df['z'] = df['z'].astype('float')
         data = df.to_numpy()
-        data = data.reshape(-1, 90, 3)
+        #data = data.reshape(-1, 90, 3)
         # Faça uma única previsão com o modelo carregado
         #class_predict = np.argmax(model.predict(data), axis=1)
         #mapeamento = {0: 'Downstairs', 1: 'Jogging', 2: 'Sitting', 3: 'Standing', 4: 'Upstairs', 5: 'Walking'}
