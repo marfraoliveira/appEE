@@ -15,11 +15,9 @@ from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
-
-#%%
 # Carregue o modelo uma vez ao iniciar o servidor Flask
-model = load_model('./modelCNN.h5')
-import time
+model = load_model('modelCNN.h5')
+
 
 
 @app.route('/', methods=['GET'])
