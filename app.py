@@ -1,3 +1,4 @@
+import pandas as pd
 from flask import Flask, request, jsonify
 import tensorflow as tf
 
@@ -8,12 +9,12 @@ model = tf.keras.models.load_model('modelCNN.h5')
 def predict():
     data = request.get_json()
     input_data = preprocess_data(data['input'])
-    result = modelCNN.predict(input_data)
+    result = model.predict(input_data)
     return jsonify({'prediction': result.tolist()})
 
 def preprocess_data(input_data):
     columns = ['x', 'y', 'z']
-    df = pd.DataFrame(data, columns=columns)
+    df = pd.DataFrame(input_data, columns=columns)
     df['x'] = df['x'].astype('float')
     df['y'] = df['y'].astype('float')
     df['z'] = df['z'].astype('float')
@@ -21,7 +22,8 @@ def preprocess_data(input_data):
     data = data.reshape(-1, 90, 3)
     # Implemente o pré-processamento necessário para seus dados
     # Isso pode incluir normalização, redimensionamento, etc.
-return input_data
+    return input_data
 
 if __name__ == '__main__':
     app.run(debug=True)
+
