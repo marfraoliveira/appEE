@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 import tensorflow as tf
 
 app = Flask(__name__)
-model = tf.keras.models.load_model('./modelCNN.h5')
+model = tf.keras.models.load_model('modelCNN.h5')
 
 @app.route('/api', methods=['POST'])
 def predict():
@@ -13,7 +13,7 @@ def predict():
     # Certifique-se de converter os dados para float32 antes de passá-los para o modelo
     result = model.predict(tf.convert_to_tensor(input_data, dtype=tf.float32))
     
-    return jsonify({'prediction': result.tolist()})
+    return jsonify({'prediction': 'result.tolist()'})
 
 def preprocess_data(input_data):
     columns = ['x', 'y', 'z']
