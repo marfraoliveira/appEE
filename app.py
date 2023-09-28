@@ -1,3 +1,16 @@
+from distutils.log import debug
+from fileinput import filename
+from flask import Flask,request,jsonify  
+import numpy as np
+import pandas as pd
+import keras.models
+from keras.models import model_from_json
+import json
+from json import JSONEncoder
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+import tensorflow as tf
+from tensorflow.keras.models import load_model
+
 import time
 from distutils.log import debug
 from fileinput import filename
@@ -13,11 +26,11 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
+
 app = Flask(__name__)
 
 # Carregue o modelo uma vez ao iniciar o servidor Flask
 model = load_model('modelCNN.h5')
-
 
 
 @app.route('/', methods=['GET'])
@@ -42,7 +55,7 @@ def predict():
         class_predict = np.argmax(model.predict(data), axis=1)
         mapeamento = {0: 'Downstairs', 1: 'Jogging', 2: 'Sitting', 3: 'Standing', 4: 'Upstairs', 5: 'Walking'}
         # rotulos = [mapeamento[v] for v in class_predict]
-        return jsonify({'args': str('mapeamento')})
+        return jsonify({'args': str(mapeamento)})
     except Exception as e:
         return jsonify({'error': str(e)})
 
