@@ -1,23 +1,9 @@
-from distutils.log import debug
-from fileinput import filename
-from flask import Flask,request,jsonify  
 import numpy as np
 import pandas as pd
-import keras.models
-from keras.models import model_from_json
-import json
-from json import JSONEncoder
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-import tensorflow as tf
-from tensorflow.keras.models import load_model
-
-import time
 from distutils.log import debug
 from fileinput import filename
-from flask import *  
+#from flask import *  
 from flask import Flask,request,jsonify  
-import numpy as np
-import pandas as pd
 import keras.models
 from keras.models import model_from_json
 import json
@@ -50,7 +36,7 @@ def predict():
         #df['y'] = df['y'].astype('float')
         #df['z'] = df['z'].astype('float')
         #data = df.to_numpy()
-        data = data.reshape(-1, 90, 3)
+        #data = data.reshape(-1, 90, 3)
         # Faça uma única previsão com o modelo carregado
         #class_predict = np.argmax(model.predict(data), axis=1)
         #mapeamento = {0: 'Downstairs', 1: 'Jogging', 2: 'Sitting', 3: 'Standing', 4: 'Upstairs', 5: 'Walking'}
